@@ -16,6 +16,9 @@ const buildpath=path.join(_dirname,"../frontend/dist")
 app.use(express.static(buildpath));
 app.use(express.json());
 app.use(cors());
+require("dotenv").config({
+    path:'./process.env'
+});
 
 
 
@@ -322,6 +325,6 @@ app.post('/getcart',fetchuser,async(req,res)=>{
 
 dbconnect();
 
-app.listen(PORT,()=>{
+app.listen(process.env.PORT,()=>{
     console.log('server is listening');
 })
